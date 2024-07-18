@@ -1,0 +1,326 @@
+<div id="resetPsw">
+  <div class="row mt-5">
+    <div class="col-md-7 mt-4 mb-4" style="background: #4195DD url('./images/psw-bg.jpg');background-size: cover">
+      <img src="./images/hipai-logo.png" alt="hipai-logo" style="margin-top: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 10%;">
+      <h2 class="mt-5" style="text-align: center;color: #DBE757;font-weight: 400;font-family: roboto-medium;">Welcome to
+        HiPAI</h2>
+      <p class="mt-2 main-text-media" style="color: white;font-size: 15px;text-align: center;margin-left: 172px;
+        margin-right: 163px;font-family: roboto-regular;">HiPAI, one of the most intuitive healthcare applications,
+        allows you to find healthcare professionals, manage your records, track your medical expenses, and save
+        prescriptions securely.</p>
+      <!-- <p style="margin-left: 318px;margin-top: 80px;color: white;font-family: roboto-regular;">Avaliable In</p>
+          <img src="./images/playstore-icons.png" alt="playstore-icons" style="height: 40px;margin-left: 304px;"> -->
+      <div class="foot" style="display: flex;
+          margin-left: 33%;
+          margin-top: 63px;">
+        <div class="mt-2" style="color: white;font-family: roboto-regular;font-size: 14px;">
+          <p>Avaliable In</p>
+        </div>
+        <div class="mb-3 ml-2"><a href="https://apps.apple.com/us/app/hipai/id1434295610" target="_blank"><img
+          class="glob" src="./images/ios-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-2"><a href="https://play.google.com/store/apps/details?id=com.acarin.hipai"
+            target="_blank"><img class="glob" src="./images/android-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-5"><a href="https://www.myhipai.com/" target="_blank"><img class="glob" src="./images/web-icon.png"
+              alt="web-icon" style="height: 28px;"></a></div>
+        <div class="mt-1 ml-2" style="color: white;font-family: roboto-regular;font-size: 14px;"><a
+            href="https://www.myhipai.com/" target="_blank"
+            style="color: white;font-family: roboto-regular;font-size: 14px;">www.myhipai.com</a></div>
+
+      </div>
+
+    </div>
+    <div class="col-md-4"
+      style="padding: 14px;border-radius: 12px;box-shadow: 4px 5px 8px 3px lightgrey;background-color: white;">
+      <h4 style="border-bottom: 1px solid gray;
+        line-height: 46px;color:#248EBA;font-family: roboto-medium;">Create Your Account</h1>
+        <h5 class="mt-3" style="color: #1B5168;font-family: roboto-medium">Hello
+          <!-- <span style="color: #1B5168;font-family: roboto-medium" id='nameHeader'></span> -->
+          </h3>
+          <h6 id='emailHeader' style="color: gray;font-family: roboto-regular">
+            <!-- <img src="./images/user-icon.png" style="height: 25px;"> -->
+            <span class="" style="color: gray;font-family: roboto-regular;margin-top: -6px;"></span></h6>
+          <p class="" style="color: gray;font-size: 13px;font-family: roboto-regular;margin-top: -3px;">You have been
+            invited to create the care provider. Please choose your password to create an account.</p>
+          <form class="mt-4" id='register-form'>
+            <div class="form-group">
+              <label for="formGroupExampleInput"
+                style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Password</label>
+              <input type="password" class="form-control" id="Password" placeholder="Password" style="border-top-style: none;
+                  border-right-style: none;
+                  border-left-style: none;
+                  border-radius: 0px;
+                  border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+                  <span toggle="#Password" class="fa fa-eye-slash" id="toggle-password" style="width: 1.085714em;float: right;
+                  margin-top: -22px;font-size:20px"></span>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2"
+                style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Confirm
+                Password</label>
+              <input type="password" class="form-control" id="Confirm-Password" placeholder="Confirm Password" style="border-top-style: none;
+                  border-right-style: none;
+                  border-left-style: none;
+                  border-radius: 0px;
+                  border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+                <span toggle="#Confirm-Password" id="confirm-toggle-password" class="fa fa-eye-slash" style="width: 1.085714em;float: right;
+                margin-top: -22px;font-size:20px"></span>
+              <span id="error"></span>
+            </div>
+            <div class="form-group" style="margin-top: 48px;">
+              <div class="form-check">
+                <input class="form-check-input mt-2" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck" style="font-size: 13px;font-family:roboto-regular;">
+                  I agree to the <span id="termsOfUse"
+                    style="color: #469BC1;font-size: 13px;font-family:roboto-regular;cursor: pointer;">Terms of
+                    Use</span> And
+                  <span id="privacyStatements"
+                    style="color: #469BC1;font-size: 13px;font-family: roboto-regular;cursor: pointer;"> Privacy
+                    Statement</span>
+                </label>
+              </div>
+            </div>
+            <button id='register' type="button" class="btn btn-primary btn-lg btn-block mt-4"
+              style="background-color: #298BB7;font-weight: 500;margin-top: 36px;">Register</button>
+          </form>
+          <h6 class="text-center" style="margin-top: 25px;color: #469BC1;font-family: roboto-regular;">Already a member?
+            <a id="signIn" style="color: #469BC1;font-family: roboto-regular;cursor: pointer;">Sign In</a></h6>
+    </div>
+  </div>
+</div>
+<!----->
+<div id="verifyEmail">
+  <div class="row mt-5">
+    <div class="col-md-7 mt-4 mb-4" style="background: #4195DD url('./images/psw-bg.jpg');background-size: cover">
+      <img src="./images/hipai-logo.png" alt="hipai-logo" style="margin-top: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 10%;">
+      <h2 class="mt-5" style="text-align: center;color: #DBE757;font-weight: 400;font-family: roboto-medium;">Welcome to
+        HiPAI</h2>
+      <p class="mt-2 main-text-media" style="color: white;font-size: 15px;text-align: center;margin-left: 172px;
+      margin-right: 163px;font-family: roboto-regular;">HiPAI, one of the most intuitive healthcare applications,
+        allows you to find healthcare professionals, manage your records, track your medical expenses, and save
+        prescriptions securely.</p>
+      <!-- <p style="margin-left: 318px;margin-top: 80px;color: white;font-family: roboto-regular;">Avaliable In</p>
+        <img src="./images/playstore-icons.png" alt="playstore-icons" style="height: 40px;margin-left: 304px;"> -->
+      <div class="foot" style="display: flex;
+        margin-left: 33%;
+        margin-top: 63px;">
+        <div class="mt-2" style="color: white;font-family: roboto-regular;font-size: 14px;">
+          <p>Avaliable In</p>
+        </div>
+        <div class="mb-3 ml-2"><a href="https://apps.apple.com/us/app/hipai/id1434295610" target="_blank">
+          <img class="glob" src="./images/ios-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-2"><a href="https://play.google.com/store/apps/details?id=com.acarin.hipai"
+            target="_blank"><img class="glob" src="./images/android-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-5"><a href="https://www.myhipai.com/" target="_blank"><img class="glob" src="./images/web-icon.png"
+              alt="web-icon" style="height: 28px;"></a></div>
+        <div class="mt-1 ml-2" style="color: white;font-family: roboto-regular;font-size: 14px;"><a
+            href="https://www.myhipai.com/" target="_blank"
+            style="color: white;font-family: roboto-regular;font-size: 14px;">www.myhipai.com</a></div>
+
+      </div>
+
+    </div>
+    <div class="col-md-4"
+      style="padding: 14px;border-radius: 12px;box-shadow: 4px 5px 8px 3px lightgrey;background-color: white;">
+      <h4 style="margin-top: 165px;
+      line-height: 46px;color:#248EBA;font-family: roboto-medium;text-align: center;">Email Verified Successfully</h4>
+      <p style="font-size: 15px;font-family: roboto-regular;text-align: center;">HiPAI is available in all Android and
+        iOS mobile devices. The app supports Android version Jelly Bean and iOS version 11.0 and above. You can download
+        this app directly from the Apple's app store and Google's play store</p>
+    </div>
+  </div>
+</div>
+<!--patient psw reset-->
+<!-- <div id="invResetPsw">
+  <div class="row mt-5">
+    <div class="col-md-7 mt-4 mb-4" style="background: #4195DD url('./images/psw-bg.jpg');background-size: cover">
+      <img src="./images/hipai-logo.png" alt="hipai-logo" style="margin-top: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 10%;">
+      <h2 class="mt-5" style="text-align: center;color: #DBE757;font-weight: 400;font-family: roboto-medium;">Welcome to
+        HiPAI</h2>
+      <p class="mt-2" style="color: white;font-size: 15px;text-align: center;margin-left: 172px;
+        margin-right: 163px;font-family: roboto-regular;">HiPAI, one of the most intuitive healthcare applications,
+        allows you to find healthcare professionals, manage your records, track your medical expenses, and save
+        prescriptions securely.</p>
+      <div class="foot" style="display: flex;
+          margin-left: 33%;
+          margin-top: 63px;">
+        <div class="mt-2" style="color: white;font-family: roboto-regular;font-size: 14px;">
+          <p>Avaliable In</p>
+        </div>
+        <div class="mb-3 ml-2"><a href="https://apps.apple.com/us/app/hipai/id1434295610" target="_blank"><img
+              src="./images/ios-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-2"><a href="https://play.google.com/store/apps/details?id=com.acarin.hipai"
+            target="_blank"><img src="./images/android-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+        <div class="mb-3 ml-5"><a href="https://www.myhipai.com/" target="_blank"><img src="./images/web-icon.png"
+              alt="web-icon" style="height: 28px;"></a></div>
+        <div class="mt-1 ml-2" style="color: white;font-family: roboto-regular;font-size: 14px;"><a
+            href="https://www.myhipai.com/" target="_blank"
+            style="color: white;font-family: roboto-regular;font-size: 14px;">www.myhipai.com</a></div>
+
+      </div>
+
+    </div>
+    <div class="col-md-4"
+      style="padding: 14px;border-radius: 12px;box-shadow: 4px 5px 8px 3px lightgrey;background-color: white;">
+      <h4 style="border-bottom: 1px solid gray;
+        line-height: 46px;color:#248EBA;font-family: roboto-medium;">Password Reset</h1>
+        <h5 class="mt-3" style="color: #1B5168;font-family: roboto-medium">Hello
+          </h3>
+          <h6 id='emailHeader' style="color: gray;font-family: roboto-regular">
+            <span class="" style="color: gray;font-family: roboto-regular;margin-top: -6px;"></span></h6>
+          <p class="" style="color: gray;font-size: 13px;font-family: roboto-regular;margin-top: -3px;">
+             Please reset your password to login an account.</p>
+          <form class="mt-4" id='register-form'>
+            <div class="form-group">
+              <label for="formGroupExampleInput"
+                style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Password</label>
+              <input type="password" class="form-control" id="Password" placeholder="Password" style="border-top-style: none;
+                  border-right-style: none;
+                  border-left-style: none;
+                  border-radius: 0px;
+                  border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2"
+                style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Confirm
+                Password</label>
+              <input type="password" class="form-control" id="Confirm-Password" placeholder="Confirm Password" style="border-top-style: none;
+                  border-right-style: none;
+                  border-left-style: none;
+                  border-radius: 0px;
+                  border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+              <span id="error"></span>
+            </div>
+            <div class="form-group" style="margin-top: 48px;">
+              <div class="form-check">
+                <input class="form-check-input mt-2" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck" style="font-size: 13px;font-family:roboto-regular;">
+                  I Agree To The <span id="termsOfUse"
+                    style="color: #469BC1;font-size: 13px;font-family:roboto-regular;cursor: pointer;">Terms of
+                    Use</span> And
+                  <span id="privacyStatements"
+                    style="color: #469BC1;font-size: 13px;font-family: roboto-regular;cursor: pointer;"> Privacy
+                    Statement</span>
+                </label>
+              </div>
+            </div>
+            <button id='register' type="button" class="btn btn-primary btn-lg btn-block mt-4"
+              style="background-color: #298BB7;font-weight: 500;margin-top: 36px;">Register</button>
+          </form>
+    </div>
+  </div>
+</div> -->
+<div id="patientResetPSW">
+  <div class="row mt-5">
+  <div class="col-md-7 mt-4 mb-4" style="background: #4195DD url('./images/psw-bg.jpg');background-size: cover">
+    <img src="./images/hipai-logo.png" alt="hipai-logo" style="margin-top: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 10%;">
+    <h2 class="mt-5" style="text-align: center;color: #DBE757;font-weight: 400;font-family: roboto-medium;">Welcome to
+      HiPAI</h2>
+    <p class="mt-2 main-text-media" style="color: white;font-size: 15px;text-align: center;margin-left: 172px;
+      margin-right: 163px;font-family: roboto-regular;">HiPAI, one of the most intuitive healthcare applications,
+      allows you to find healthcare professionals, manage your records, track your medical expenses, and save
+      prescriptions securely.</p>
+    <!-- <p style="margin-left: 318px;margin-top: 80px;color: white;font-family: roboto-regular;">Avaliable In</p>
+        <img src="./images/playstore-icons.png" alt="playstore-icons" style="height: 40px;margin-left: 304px;"> -->
+    <div class="foot" style="display: flex;
+        margin-left: 33%;
+        margin-top: 63px;">
+      <div class="mt-2" style="color: white;font-family: roboto-regular;font-size: 14px;">
+        <p>Avaliable In</p>
+      </div>
+      <div class="mb-3 ml-2"><a href="https://apps.apple.com/us/app/hipai/id1434295610" target="_blank">
+        <img class="glob" src="./images/ios-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+      <div class="mb-3 ml-2"><a href="https://play.google.com/store/apps/details?id=com.acarin.hipai"
+          target="_blank">
+          <img class="glob" src="./images/android-icon.png" alt="playstore-icons" style="height: 28px;"></a></div>
+      <div class="mb-3 ml-5"><a href="https://www.myhipai.com/" target="_blank">
+        <img class="glob" src="./images/web-icon.png"
+            alt="web-icon" style="height: 28px;"></a></div>
+      <div class="mt-1 ml-2" style="color: white;font-family: roboto-regular;font-size: 14px;"><a
+          href="https://www.myhipai.com/" target="_blank"
+          style="color: white;font-family: roboto-regular;font-size: 14px;">www.myhipai.com</a></div>
+
+    </div>
+
+  </div>
+  <div class="col-md-4"
+    style="padding: 14px;border-radius: 12px;box-shadow: 4px 5px 8px 3px lightgrey;background-color: white;">
+    <div id="form-section-hide">
+    <h4 style="border-bottom: 1px solid gray;
+      line-height: 46px;color:#248EBA;font-family: roboto-medium;">Reset Password</h1>
+      <h5 class="mt-3" style="color: #1B5168;font-family: roboto-medium">Hello
+        <!-- <span style="color: #1B5168;font-family: roboto-medium" id='nameHeader'></span> -->
+        </h3>
+        <h6 id='patientEmailHeader' style="color: gray;font-family: roboto-regular">
+          <!-- <img src="./images/user-icon.png" style="height: 25px;"> -->
+          <span class="" style="color: gray;font-family: roboto-regular;margin-top: -6px;"></span></h6>
+        <p class="" style="color: gray;font-size: 13px;font-family: roboto-regular;margin-top: -3px;">
+          Please reset your password to login an account.</p>
+        <form class="mt-4" id='patient-register-form'>
+          <div class="form-group">
+            <label for="formGroupExampleInput"
+              style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Password</label>
+            <input type="password" class="form-control" id="patientPassword" placeholder="Password" style="border-top-style: none;
+                border-right-style: none;
+                border-left-style: none;
+                border-radius: 0px;
+                border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+            <span toggle="#patientPassword" class="fa fa-eye-slash" id="reset-toggle-password" style="width: 1.085714em;float: right;
+              margin-top: -22px;font-size:20px"></span>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2"
+              style="color: #1B5168;font-weight: 500;font-family: roboto-medium;font-size: 15px;">Confirm
+              Password</label>
+            <input type="password" class="form-control" id="patientConfirm-Password" placeholder="Confirm Password" style="border-top-style: none;
+                border-right-style: none;
+                border-left-style: none;
+                border-radius: 0px;
+                border-bottom: 1px solid lightgray;margin-top: -10px;" required>
+            <span toggle="#patientConfirm-Password" class="fa fa-eye-slash" id="confirm-reset-toggle-password" style="width: 1.085714em;float: right;
+              margin-top: -22px;font-size:20px"></span>
+            <span id="reset-psw-error" style="color: red;display: none;font-weight:500">Passwords Don't Match</span>
+          </div>
+          <!-- <div class="form-group" style="margin-top: 48px;">
+            <div class="form-check">
+              <input class="form-check-input mt-2" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck" style="font-size: 13px;font-family:roboto-regular;">
+                I Agree To The <span id="termsOfUse"
+                  style="color: #469BC1;font-size: 13px;font-family:roboto-regular;cursor: pointer;">Terms of
+                  Use</span> And
+                <span id="privacyStatements"
+                  style="color: #469BC1;font-size: 13px;font-family: roboto-regular;cursor: pointer;"> Privacy
+                  Statement</span>
+              </label>
+            </div>
+          </div> -->
+          <button id='patient-register' type="button" class="btn btn-primary btn-lg btn-block mt-4"
+            style="background-color: #298BB7;font-weight: 500;margin-top: 36px;">Submit</button>
+        </form>
+      </div>
+        <!-- <h6  class="text-center" style="margin-top: 165px;
+        line-height: 46px;color:#248EBA;font-family: roboto-medium;text-align: center;"></h6> -->
+         <h4 id="patientSucess" style="margin-top: 165px;
+         line-height: 46px;color:#248EBA;font-family: roboto-medium;text-align: center;"></h4>
+         <p id="patientSucessDesc"style="font-size: 15px;font-family: roboto-regular;text-align: center;color:#248EBA">
+        </p>
+          <!-- <a id="patient-signIn" style="color: #469BC1;font-family: roboto-regular;cursor: pointer;">Sign In</a></h6> -->
+  </div>
+</div>
+</div>
+<div id="snackbar"></div>

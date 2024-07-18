@@ -1,0 +1,71 @@
+image: node:20
+
+pipelines:
+  default:
+    - step:
+        runs-on:
+          - self.hosted
+          - linux.shell
+        name: Build
+        script:
+          - cd functions
+          - echo "$BITBUCKET_BRANCH"
+          - echo "Build and deploy it to Acarin region"
+          - shortCommit=$(git log -n 1 --pretty=format:'%s' | tr -d '\n')
+          - echo "JIRA integration test"
+          - pwd
+          - ls -ltr
+          - echo "Preparing build environment"
+          - npm install ----legacy-peer-deps
+          - ./node_modules/.bin/firebase use default
+          - echo "Running build"
+          - npm run build
+          - echo "Build and deploy for Acarin region"
+    - step: 
+        runs-on:
+          - self.hosted
+          - linux.shell
+        name: Deploy to dev
+        script: 
+          - cd functions
+          - echo "Deploy to dev"
+          - |
+            if [[ "$BITBUCKET_BRANCH" == 'master' ]]; then
+              npm install ----legacy-peer-deps
+              export GOOGLE_APPLICATION_CREDENTIALS=/var/lib/jenkins/evlotime/evlotime-dev.json
+              ./node_modules/.bin/firebase use default
+              ./node_modules/.bin/firebase deploy --only functions -P default --force
+            fi
+    - step: 
+        runs-on:
+          - self.hosted
+          - linux.shell
+        name: Deploy to demo
+        script: 
+         - cd functions
+         - echo "Deploy to demo"
+         - |
+           if [[ "$BITBUCKET_BRANCH" == release/* ]]; then
+              npm install ----legacy-peer-deps
+              export GOOGLE_APPLICATION_CREDENTIALS=/var/lib/jenkins/evlotime/evlotime-demo.json
+              ./node_modules/.bin/firebase use staging
+              ./node_modules/.bin/firebase deploy --only functions -P staging --force
+           fi
+    - step: 
+        runs-on:
+          - self.hosted
+          - linux.shell
+        name: Deploy to prod
+        script: 
+           - cd functions 
+           - echo "Deploy to prod"
+           - |
+             if [[ "$BITBUCKET_BRANCH" == prod/* ]]; then
+               npm install ----legacy-peer-deps
+               export GOOGLE_APPLICATION_CREDENTIALS=/var/lib/jenkins/evlotime/evlotime-prod.json
+               ./node_modules/.bin/firebase use prod
+               ./node_modules/.bin/firebase deploy --only functions -P prod --force
+             fi
+definitions:
+  caches:
+    node: server/node_modules

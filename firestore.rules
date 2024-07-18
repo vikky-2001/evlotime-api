@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+    match /{document=**} {
+      // allow read, write: if request.auth.token.role == "admin";
+      allow read: if request.auth!=null || request.auth == null;
+   }
+   match /invitation/{invitationId}{
+   allow write: if request.auth != null && request.auth.token.role == "super_admin" || request.auth != null && request.auth.token.role == "org_admin";
+   allow update: if request.auth != null && request.auth.token.role == "super_admin" || request.auth != null && request.auth.token.role == "manager" && request.auth.token.employeeId == request.resource.data.employeeId;
+   allow read : if request.auth != null && request.auth.token.role == "org_admin" || request.auth.token.companyId == request.resource.data.companyId;
+   allow delete : if false;
+   }
+   match /companies/{companiesId}{
+   allow delete: if false;
+   allow read: if request.auth != null && request.auth.token.role == "super_admin";
+   allow update: if request.auth != null && request.auth.token.role == "org_admin" && request.auth.uid == request.resource.data.uid;
+   allow write: if request.auth != null && request.auth.token.role == "super_admin";
+   }
+   match /users/{usersId}{
+   allow delete: if false;
+   allow read: if request.auth != null && request.auth.token.role == "org_admin" && request.auth.token.companyId == request.resource.data.companyId && request.resource.data.role == "manager" || request.auth != null && request.auth.token.role == "manager" && request.auth.token.companyId == request.resource.data.companyId && request.resource.data.role == "employee" && request.auth.uid == request.resource.data.createdBy;
+   allow update: if request.auth != null && request.auth.token.role == "org_admin" && request.auth.uid == request.resource.data.uid || request.auth != null && request.auth.token.role == "manager" && request.auth.token.companyId == request.resource.data.companyId && request.resource.data.role == "employee" && request.auth.uid == request.resource.data.createdBy || request.auth != null && request.auth.token.role == "org_admin" && request.auth.token.companyId == request.resource.data.companyId;
+   allow write: if true;
+   }
+	 match /notifications/{notificationsId}{
+   allow update: if request.auth != null && request.auth.token.role == "manager" && request.auth.token.employeeId == request.resource.data.employeeId || request.auth != null && request.auth.token.role == "employee" && request.auth.token.employeeId == request.resource.data.employeeId;
+   }
+   match /employees/{employeesId}{
+   allow delete: if false;
+   allow read, write: if request.auth != null && request.auth.uid == request.resource.data.uid;
+   allow update: if request.auth != null && request.auth.uid == request.resource.data.uid;
+   }
+   match /checkin/{checkinId}{
+   allow write: if request.auth != null  || request.auth != null && request.auth.token.role == "manager"|| request.auth != null && request.auth.token.role == "employee" 
+   allow update: if request.auth != null && request.auth.token.role == "manager" && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId || request.auth != null && request.auth.token.role == "employee" && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId
+   allow delete: if false
+   }
+   match /projects/{projectsId}{
+   allow delete: if false;
+   allow update: if request.auth != null && request.auth.token.role == "org_admin" && request.auth.token.companyId == request.resource.data.companyId || request.auth != null && request.auth.token.role == "manager" && request.auth.token.companyId == request.resource.data.companyId;
+   allow read: if request.auth != null && request.auth.token.role == "org_admin" && request.auth.companyId == request.resource.data.companyId || request.auth != null && request.auth.token.role == "manager" && request.auth.companyId == request.resource.data.companyId || request.auth != null && request.auth.token.role == "employee";
+   allow write: if request.auth != null && request.auth.token.role == "org_admin";
+   }
+   match /rejected_reasons/{rejected_reasonsId}{
+   allow read: if request.auth != null && request.auth.token.role == "manager";
+   allow write, update, delete: if false;
+   }
+   match /tasks/{taskId}{
+   allow read: if request.auth != null && request.auth.token.role == "manager" || request.auth != null && request.auth.token.role == "employee";
+   allow write, update, delete: if request.auth != null && request.auth.token.role == "org_admin" || request.auth != null && request.auth.token.role == "manager";
+   }
+   match /time-entry/{timeentryId}{
+   allow read, delete: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId  &&  request.auth.token.role == "employee";
+   allow update: if request.auth != null && request.auth.token.multiAccountAccess == true && request.auth.token.companyId == request.resource.data.companyId || request.auth != null && request.auth.token.role == "org_admin" && request.auth.token.companyId == request.resource.data.companyId && request.resource.data.role == 'manager' || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId  &&  request.auth.token.role == "employee";
+   allow write: if request.auth != null && request.auth.token.role == "manager" || request.auth != null && request.auth.token.role == "employee"  ;
+   }
+   match /checkin/{checkinId}{
+   allow read, update, delete: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "employee";
+   allow write: if request.auth != null && request.auth.token.role == "manager" || request.auth != null && request.auth.token.role == "employee"  ;
+   }
+   match /employee_leaves/{employee_leavesId}{
+   allow delete: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "employee";
+   allow read, update: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "manager" || 
+   request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.employeeId == request.resource.data.employeeId && request.auth.token.role == "employee" || 
+   request.auth != null && request.auth.token.employeeId == request.resource.data.reportingManagerId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.role == "org_admin";
+   allow write: if request.auth != null && request.auth.token.role == "manager" || request.auth != null && request.auth.token.role == "employee"  ;
+   }
+   match /holidays/{holidaysId}{
+   allow read: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.role == "org_admin" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.role == "manager" || request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.role == "employee"
+   allow update, delete: if request.auth != null && request.auth.token.companyId == request.resource.data.companyId && request.auth.token.role == "org_admin"
+   allow write: if true;
+   }
+   match /leave_rejected_reasons/{leave_rejected_reasonsId}{
+   allow read: if request.auth != null && request.auth.token.role == "org_admin" || request.auth != null && request.auth.token.role == "manager" 
+   }
+   match /leave_types/{leave_typesId}{
+   allow read: if request.auth != null && request.auth.token.role == "manager" || request.auth != null && request.auth.token.role == "employee" 
+   }
+ }
+}

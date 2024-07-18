@@ -1,0 +1,236 @@
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>HiPAI - Verify Account</title>
+<!-- <meta name='viewport' content='width=device-width, initial-scale=1'> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    var env = '<%= params.env %>';
+    // console.log(env);
+
+    var config = {
+        'apiKey': '<%= params.key %>'
+    };
+    var app = firebase.initializeApp(config);
+    var auth = app.auth();
+    var mode = '<%= params.mode %>';
+    // Get the one-time code from the query parameter.
+    var actionCode = '<%= params.actionCode %>';
+    // (Optional) Get the continue URL from the query parameter if available.
+    var continueUrl = '<%= params.continueUrl %>';
+    // (Optional) Get the language code if available.
+    var lang = '<%= params.lang %>';
+
+    var role = '<%= params.role %>';
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        console.log(mode,role)
+        if (mode === 'resetPassword') {
+            if (role == 'cp') {
+                var verify = document.getElementById("verifyEmail").style.display = "none";
+                var reset = document.getElementById("resetPsw").style.display = "block";
+                var resetinvite = document.getElementById("patientResetPSW").style.display = "none";
+                auth.verifyPasswordResetCode(actionCode).then((email) => {
+                    console.log(email);
+                    emailHeader.innerText = email;
+                });
+                // password eye icon
+                document.getElementById("toggle-password").addEventListener('click',function(){
+                        // $(".toggle-password").click(function() {
+                           // console.log('toggle',password.value)
+                        $(this).toggleClass("fa-eye fa-eye-slash");
+                        var input = $($(this).attr("toggle"));
+                        if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                        } else {
+                        input.attr("type", "password");
+                        }
+                    // });
+                    })
+                // confirm-password eye icon
+                document.getElementById("confirm-toggle-password").addEventListener('click',function(){
+                        // $(".toggle-password").click(function() {
+                           // console.log('toggle',password.value)
+                        $(this).toggleClass("fa-eye fa-eye-slash");
+                        var input = $($(this).attr("toggle"));
+                        if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                        } else {
+                        input.attr("type", "password");
+                        }
+                    // });
+                    })
+                var form = document.getElementById("register-form");
+               // console.log('form',form);
+                document.getElementById("register").addEventListener("click", function () {
+                    // console.log('reset password here');
+                    const newpassword = document.getElementById("Confirm-Password").value;
+                    // console.log(newpassword);
+                    var password = document.getElementById("Password");
+
+                    var confirm_password = document.getElementById("Confirm-Password");
+                    // console.log('password',password.value)
+
+                    if (password.value != confirm_password.value) {
+                        // throw new Error("Passwords Don't Match");
+    
+                        error.innerHTML = "<span style='color: red;'>" + "Passwords Don't Match</span>"
+                    } else {
+
+                        auth.confirmPasswordReset(actionCode, newpassword).then(function (resp) {
+                            // console.log(JSON.stringify(resp));
+                            // redirect to confirmation page
+                            var x = document.getElementById("snackbar");
+                            x.className = "show";
+                            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                            snackbar.innerText = "Account Created Successfully"
+                            window.location.href = `https://${env}.web.app/auth/careprovider-login`;
+
+                        }).catch(function (error) {
+                            console.log('err', error);
+                            var x = document.getElementById("snackbar");
+                            x.className = "show";
+                            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                            snackbar.innerText = "User already present"
+                        });
+
+                    }
+                });
+                const check = document.getElementById('register').disabled = true;
+                document.getElementById('signIn').addEventListener("click", function () {
+                    window.open(`https://${env}.web.app/auth/careprovider-login`, "_blank");
+                });
+                document.getElementById('termsOfUse').addEventListener("click", function () {
+                    window.open(`https://www.myhipai.com/terms-of-use/`, "_blank");
+                });
+                document.getElementById('privacyStatements').addEventListener("click", function () {
+                    window.open(`https://www.myhipai.com/privacy-policy/`, "_blank");
+                });
+                document.getElementById('gridCheck').addEventListener("click", function () {
+                    if (document.getElementById('gridCheck').checked == true) {
+                        const check = document.getElementById('register').disabled = false;
+                    } else {
+                        const check = document.getElementById('register').disabled = true;
+                    }
+                });
+            } else {
+                var verify = document.getElementById("verifyEmail").style.display = "none";
+                var reset = document.getElementById("resetPsw").style.display = "none";
+                var resetinvite = document.getElementById("patientResetPSW").style.display = "block";
+
+                auth.verifyPasswordResetCode(actionCode).then((email) => {
+                    console.log(email);
+                    patientEmailHeader.innerText = email;
+                });
+                // confirm-password eye icon
+                document.getElementById("reset-toggle-password").addEventListener('click',function(){
+                        // $(".toggle-password").click(function() {
+                           // console.log('toggle',password.value)
+                        $(this).toggleClass("fa-eye fa-eye-slash");
+                        var input = $($(this).attr("toggle"));
+                        if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                        } else {
+                        input.attr("type", "password");
+                        }
+                    // });
+                    })
+                // confirm-password eye icon
+                document.getElementById("confirm-reset-toggle-password").addEventListener('click',function(){
+                        // $(".toggle-password").click(function() {
+                           // console.log('toggle',password.value)
+                        $(this).toggleClass("fa-eye fa-eye-slash");
+                        var input = $($(this).attr("toggle"));
+                        if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                        } else {
+                        input.attr("type", "password");
+                        }
+                    // });
+                    })
+                var form = document.getElementById("patient-register-form");
+
+                document.getElementById("patient-register").addEventListener("click", function () {
+                    // console.log('reset password here');
+                    const newpassword = document.getElementById("patientConfirm-Password").value;
+                    // console.log(newpassword);
+                    var rpassword = document.getElementById("patientPassword");
+                    var rconfirm_password = document.getElementById("patientConfirm-Password");
+                    console.log('rpassword',rpassword.value)
+                    console.log('rconfirm_password',rconfirm_password.value)
+                    if (rpassword.value !== rconfirm_password.value) {
+                        console.log('resetnot march')
+                        // throw new Error("Passwords Don't Match");
+                        var cer = document.getElementById("reset-psw-error").style.display = 'block';
+                       // error1.innerHTML = "<span style='color: red;'>" + "Passwords Don't Match</span>"
+                    } else {
+                        auth.confirmPasswordReset(actionCode, newpassword).then(function (resp) {
+                            // console.log(JSON.stringify(resp));
+                            // redirect to confirmation page
+                            // var x = document.getElementById("snackbar");
+                            // x.className = "show";
+                            // setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                            // snackbar.innerText = "Account Created Successfully"
+                            // window.location.href = `https://${env}.web.app/careprovider-login`;
+                            var hide = document.getElementById("form-section-hide").style.display = "none";
+                            patientSucess.innerText = "Your password has been reset successfully"
+                            patientSucessDesc.innerText = "Now you can login with your new password in the HiPAI mobile app."
+                        }).catch(function (error) {
+                            console.log('err', error);
+                            var x = document.getElementById("snackbar");
+                            x.className = "show";
+                            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                            snackbar.innerText = "Password reset is already done"
+                        });
+
+                    }
+                });
+                // const check = document.getElementById('patient-register').disabled = true;
+                // document.getElementById('patient-signIn').addEventListener("click", function () {
+                //     error.innerHTML = "<span style='color: red;'>" + "Passwords Don't Match</span>"
+                // });
+                // document.getElementById('termsOfUse').addEventListener("click", function () {
+                //     window.open(`https://www.myhipai.com/terms-of-use/`, "_blank");
+                // });
+                // document.getElementById('privacyStatements').addEventListener("click", function () {
+                //     window.open(`https://www.myhipai.com/privacy-policy/`, "_blank");
+                // });
+                // document.getElementById('gridCheck').addEventListener("click", function () {
+                //     if (document.getElementById('gridCheck').checked == true) {
+                //         const check = document.getElementById('register').disabled = false;
+                //     } else {
+                //         const check = document.getElementById('register').disabled = true;
+                //     }
+                // });
+            }
+        }
+
+        if (mode === 'verifyEmail') {
+            // console.log('modeeeee',mode)
+            var verify = document.getElementById("verifyEmail").style.display = "block";
+            var reset = document.getElementById("resetPsw").style.display = "none";
+            var resetPatientPSW = document.getElementById("patientResetPSW").style.display = "none";
+            auth.applyActionCode(actionCode).then((email) => {
+                //TODO: verified email logic
+                console.log('restoredEmail1', email)
+                // console.log('user',firebase.auth().currentUser)
+            }).catch(function (error) {
+                //TODO: error verfication logic
+            });
+            //     auth.checkActionCode(actionCode).then(function(info) {
+            //     // Get the restored email address.
+            //     restoredEmail = info['data']['email'];
+            //     console.log('restoredEmail',restoredEmail)
+            //     // Revert to the old email.
+            //    // return auth.applyActionCode(actionCode);
+            //     })
+        }
+        // console.log('user',firebase.auth().currentUser)
+
+    }, false);
+
+</script>

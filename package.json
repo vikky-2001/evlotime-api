@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "cron-schedule": "^3.0.6",
+    "firebase-functions": "^3.24.1",
+    "firebase-tools": "^11.10.0",
+    "node-schedule": "^2.1.0"
+  }
+}

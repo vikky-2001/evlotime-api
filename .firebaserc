@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "evlotime--dev",
+    "staging": "evlotime-demo",
+    "prod": "evlotime"
+  }
+}

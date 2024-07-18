@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head'); -%>
+    <style>
+        .row {
+            margin: 0;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: inherit;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        ::placeholder {
+        font-size: 15px;
+        }
+        @font-face {
+            font-family: roboto-medium;
+            src: url(./fonts/roboto-medium.ttf);
+        }
+
+        @font-face {
+            font-family: roboto-regular;
+            src: url(./fonts/roboto-regular.ttf);
+        }
+        
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+        @media screen and (min-width: 2560px) {
+        .foot{
+        margin-left:39% !important;
+        }
+        .main-text-media{
+            width: 100% !important;
+        }
+  }
+  @media only screen and (max-width: 600px) {
+        .main-text-media{
+            margin-left: 12px !important;
+            width: 100% !important;
+        }
+        .foot{
+        margin-left:0% !important;
+        }
+
+        }
+        @media only screen and (min-width: 600px) {
+        .main-text-media{
+            margin-left: 12px !important;
+            width: 100% !important;
+        }
+        /* .glob{
+            height: 18px !important;
+        } */
+        /* .foot{
+        margin-left:15% !important;
+        } */
+        }
+        @media only screen and (min-width: 750px) and (max-width:927px) {
+        .foot{
+        margin-left:15% !important;
+        } 
+        }
+        @media only screen and (min-width: 200px) and (max-width:370px) {
+        .glob{
+            height: 18px !important;
+        }
+        .foot{
+        margin-left:15px !important;
+        }
+        /* .main-text-media{
+            text-align: justify !important;
+            margin-left: 0px !important;
+        } */
+        }
+    </style>
+</head>
+
+<body style="background-color: #EDF2F2;">
+    <!-- <header>
+        <%- include('partials/header'); -%>
+    </header> -->
+    <!-- <main>
+            <div class="jumbotron">
+                <h1>Your Account Created Successfully with HiPAI</h1>
+                <h2><a href="https://admin.myhipai.com/careprovider-login">Click here to login</a></h2>
+            </div>
+        </main>
+        <footer>
+            <%- include('partials/footer'); -%>
+        </footer> -->
+
+</body>
+
+</html>
