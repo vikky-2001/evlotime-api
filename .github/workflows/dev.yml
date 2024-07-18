@@ -18,8 +18,7 @@ jobs:
       #     serviceAccountKey: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
       #     projectId: "evlotime--dev" 
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
-          projectId: "evlotime--dev" 
-          channelId: live
+      - uses: dheshalj/deploy-firebase-functions@v0.0.2
+        env:
+          FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
+          FIREBASE_PROJECT: "evlotime--dev" 
