@@ -16,4 +16,4 @@ jobs:
       - uses: kburakengin/firebase-functions-deploy@v1.2
         with:
           serviceAccountKey: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
-          projectId: "evlotime--dev"
+          projectId: "evlotime--dev" 
