@@ -18,7 +18,7 @@ jobs:
       #     serviceAccountKey: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
       #     projectId: "evlotime--dev" 
 
-      - uses: dheshalj/deploy-firebase-functions@v0.0.2
+      - uses: dheshalj/deploy-firebase-functions@v0.0.4
         env:
           FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
           FIREBASE_PROJECT: "evlotime--dev" 
