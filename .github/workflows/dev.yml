@@ -44,3 +44,4 @@ jobs:
           args: use evlotime--dev &&  deploy --only functions
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}
+          PROJECT_ID: evlotime--dev
