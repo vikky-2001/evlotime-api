@@ -29,11 +29,18 @@ jobs:
       #     FIREBASE_PROJECT: "evlotime--dev" 
 
 
-      - name: Download deps
-        working-directory: functions
-        run: npm install
+      # - name: Download deps
+      #   working-directory: functions
+      #   run: npm install
 
-      - name: Deploy
-        run: firebase use evlotime--dev && npx firebase-tools deploy
+      # - name: Deploy
+      #   run: firebase use evlotime--dev && npx firebase-tools deploy
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
