@@ -18,15 +18,15 @@ jobs:
       #     serviceAccountKey: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
       #     projectId: "evlotime--dev" 
 
-      - uses: dheshalj/deploy-firebase-functions@v0.0.4
-        env:
-          FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
-          FIREBASE_PROJECT: "evlotime--dev" 
-
-      # - uses: jsryudev/deploy-firebase-functions@v20.0.1
+      # - uses: dheshalj/deploy-firebase-functions@v0.0.4
       #   env:
       #     FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
       #     FIREBASE_PROJECT: "evlotime--dev" 
+
+      - uses: jsryudev/deploy-firebase-functions@v20.0.1
+        env:
+          FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME__DEV }}"
+          FIREBASE_PROJECT: "evlotime--dev" 
 
 
       # - name: Download deps
