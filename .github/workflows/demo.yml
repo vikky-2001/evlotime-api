@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '20.x'
       - run: cd functions && pwd && ls -ltr && rm -rf ./node_modules && node --version && npm install --legacy-peer-deps && npm install -g firebase-tools
-      - uses: kburakengin/firebase-functions-deploy@v1.2
-        with:
-          serviceAccountKey: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME_DEMO }}"
-          projectId: "evlotime--dev" 
+      - uses: jsryudev/deploy-firebase-functions@v20.0.1
+        env:
+          FIREBASE_TOKEN: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EVLOTIME_DEMO }}"
+          FIREBASE_PROJECT: "evlotime--dev" 
